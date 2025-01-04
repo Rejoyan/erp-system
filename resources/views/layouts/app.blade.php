@@ -1,52 +1,18 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ERP System</title>
 
-    <title>{{ config('app.name', 'ERP System') }}</title>
+    <!-- Include compiled CSS and JS from Vite -->
+    @vite(['resources/js/app.js', 'resources/sass/app.scss'])
 
-    <!-- AdminLTE Styles -->
-    <link rel="stylesheet" href="{{ asset('vendor/adminlte/dist/css/adminlte.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('vendor/fontawesome-free/css/all.min.css') }}">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- You can include additional meta tags or custom styles here -->
 </head>
-<body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed skin-yellow">
+<body class="hold-transition sidebar-mini layout-fixed">
     <div class="wrapper">
-        <!-- Navbar -->
-        <nav class="main-header navbar navbar-expand navbar-white navbar-light">
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
-                </li>
-                <li class="nav-item d-none d-sm-inline-block">
-                    <a href="{{ route('home') }}" class="nav-link">Home</a>
-                </li>
-            </ul>
-            <!-- Right navbar links -->
-            <ul class="navbar-nav ml-auto">
-                @if (Auth::check())
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('logout') }}" role="button" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                            <i class="fas fa-sign-out-alt"></i> Logout
-                        </a>
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                            @csrf
-                        </form>
-                    </li>
-                @else
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('login') }}">Login</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('register') }}">Register</a>
-                    </li>
-                @endif
-            </ul>
-        </nav>
-
-        <!-- Sidebar -->
+        <!-- Main Sidebar -->
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
             <a href="{{ route('home') }}" class="brand-link">
                 <span class="brand-text font-weight-light">ERP System</span>
@@ -61,15 +27,39 @@
                             </a>
                         </li>
                         <li class="nav-item">
+                            <a href="{{ route('jobs.index') }}" class="nav-link">
+                                <i class="nav-icon fas fa-briefcase"></i>
+                                <p>Job Management</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('tasks.index') }}" class="nav-link">
+                                <i class="nav-icon fas fa-tasks"></i>
+                                <p>Tasks</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
                             <a href="{{ route('inventory.index') }}" class="nav-link">
                                 <i class="nav-icon fas fa-boxes"></i>
                                 <p>Inventory</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('profile.edit') }}" class="nav-link">
-                                <i class="nav-icon fas fa-user"></i>
-                                <p>Profile</p>
+                            <a href="{{ route('reports.index') }}" class="nav-link">
+                                <i class="nav-icon fas fa-chart-line"></i>
+                                <p>Reports</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('notifications.index') }}" class="nav-link">
+                                <i class="nav-icon fas fa-bell"></i>
+                                <p>Notifications</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('settings.index') }}" class="nav-link">
+                                <i class="nav-icon fas fa-cog"></i>
+                                <p>Settings</p>
                             </a>
                         </li>
                     </ul>
@@ -79,22 +69,12 @@
 
         <!-- Content Wrapper -->
         <div class="content-wrapper">
-            <section class="content">
-                <div class="container-fluid">
-                    @yield('content')
-                </div>
-            </section>
+            @yield('content')
         </div>
-
-        <!-- Footer -->
-        <footer class="main-footer">
-            <strong>Copyright &copy; {{ date('Y') }} <a href="#">{{ config('app.name', 'ERP System') }}</a>.</strong>
-            All rights reserved.
-        </footer>
     </div>
 
-    <!-- Scripts -->
-    <script src="{{ asset('vendor/jquery/jquery.min.js') }}"></script>
-    <script src="{{ asset('vendor/adminlte/dist/js/adminlte.min.js') }}"></script>
+    <!-- Optional: Include JavaScript files -->
+    @vite('resources/js/app.js')
+
 </body>
 </html>

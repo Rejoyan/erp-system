@@ -1,0 +1,85 @@
+@import 'bootstrap/scss/bootstrap';
+
+
+// Sidebar Styling
+.sidebar {
+    background-color: #343a40; // Dark background for sidebar
+    height: 100vh; // Ensure sidebar stretches full height
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 250px; // Adjust sidebar width for better visibility
+    box-shadow: 2px 0px 10px rgba(0, 0, 0, 0.1); // Subtle shadow for depth
+    z-index: 100;
+    transition: all 0.3s ease; // Smooth transition when expanding or collapsing
+}
+
+.sidebar .brand-link {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    background-color: #007bff; // Highlighted color for the brand section
+    color: #ffffff;
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+}
+
+.sidebar .brand-link:hover {
+    background-color: #0056b3; // Hover effect for the brand link
+}
+
+.sidebar .nav-pills {
+    padding-left: 0;
+}
+
+.nav-sidebar {
+    display: flex;
+    flex-direction: column;
+    padding-top: 10px;
+}
+
+.nav-item {
+    width: 100%; // Ensure the entire width is clickable for each item
+}
+
+.nav-link {
+    color: #ffffff; // White text for links
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+    border-radius: 5px; // Rounded corners for a smoother look
+    transition: background-color 0.3s ease;
+    font-size: 1rem; // Adjust font size for better readability
+}
+
+.nav-link .nav-icon {
+    margin-right: 15px; // Space between icon and text
+    font-size: 1.2rem; // Adjust icon size for better alignment
+}
+
+.nav-link:hover {
+    background-color: #495057; // Darker background on hover
+    color: #007bff; // Change text color on hover for contrast
+}
+
+.nav-link.active {
+    background-color: #007bff; // Highlight active menu item
+    color: #ffffff;
+    font-weight: bold; // Emphasize active menu item
+}
+
+// Optional: Add a collapse effect for the sidebar (to be toggled with JS or button)
+.sidebar.collapsed {
+    width: 80px; // Collapsed width
+}
+
+.sidebar.collapsed .nav-link {
+    justify-content: center; // Center align the text/icons in collapsed state
+}
+
+.sidebar.collapsed .brand-link {
+    text-align: center;
+    font-size: 1rem;
+}

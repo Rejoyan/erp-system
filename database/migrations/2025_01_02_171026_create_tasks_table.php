@@ -13,11 +13,11 @@ return new class extends Migration
     {
         Schema::create('tasks', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
+            $table->foreignId('job_id')->constrained()->onDelete('cascade'); // Foreign key to jobs table
+            $table->string('task_name');
             $table->text('description')->nullable();
-            $table->date('due_date');
-            $table->enum('status', ['not_started', 'in_progress', 'completed'])->default('not_started');
-            $table->foreignId('job_id')->constrained()->onDelete('cascade');
+            $table->date('due_date')->nullable();
+            $table->boolean('completed')->default(false);
             $table->timestamps();
         });
     }
